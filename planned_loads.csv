@@ -1,0 +1,31 @@
+load_id,required_length_in_feet,required_height_in_feet,carrier_code,destination,special_requirements
+,53,14,ABCD,New York,None
+,48,12,ABCD,Boston,None
+,53,14,EFGH,Chicago,Refrigerated
+,48,12,EFGH,Dallas,None
+,53,14,IJKL,Miami,Fragile
+,48,12,IJKL,Los Angeles,None
+,53,14,ABCD,Houston,None
+,48,12,EFGH,Denver,None
+,53,14,ABCD,Phoenix,Heavy Load
+,48,12,IJKL,San Francisco,None
+,53,14,EFGH,Seattle,Hazardous
+,48,12,EFGH,Portland,None
+,53,14,IJKL,Atlanta,Perishable
+,48,12,IJKL,Dallas,None
+,53,14,ABCD,Las Vegas,Heavy Load
+,48,12,ABCD,Denver,None
+,53,14,EFGH,Orlando,Refrigerated
+,48,12,EFGH,Miami,None
+,53,14,IJKL,Austin,Fragile
+,48,12,IJKL,Boston,None
+,53,14,ABCD,New York,Heavy Load
+,48,12,ABCD,Chicago,None
+,53,14,EFGH,San Francisco,Hazardous
+,48,12,EFGH,Los Angeles,None
+,53,14,IJKL,Seattle,Refrigerated
+,48,12,IJKL,Portland,None
+,53,14,MNOP,Phoenix,None
+,48,12,ABCD,San Francisco,Fragile
+,53,14,EFGH,Houston,None
+,48,12,EFGH,Atlanta,Heavy Load

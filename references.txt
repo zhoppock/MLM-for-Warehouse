@@ -1,0 +1,7 @@
+The version of Python in use is 3.12.
+
+The following Python libraries were installed and used in this program:
+
+- sqlite3 (used to manage and pull SQLite data)
+- time (used to delay program loading times)
+- tabulate (used to populate SQLite data into user-friendly tables)

@@ -1,0 +1,83 @@
+CREATE TABLE "planned_loads" (
+	"load_id"	INTEGER,
+	"required_length_in_feet"	INTEGER NOT NULL,
+	"required_height_in_feet"	INTEGER NOT NULL,
+	"carrier_code"	TEXT NOT NULL,
+	"destination"	TEXT NOT NULL,
+	"special_requirements"	TEXT,
+	PRIMARY KEY("load_id" AUTOINCREMENT),
+	CHECK("load_id" > 0 AND "load_id" <= 1000),
+	CHECK("required_length_in_feet" IN (48, 53)),
+	CHECK("required_height_in_feet" IN (12, 14)),
+	CHECK(LENGTH("carrier_code") <= 4)
+);
+
+
+CREATE TABLE "trailers_in_yard" (
+	"trailer_id"	INTEGER,
+	"trailer_number"	TEXT NOT NULL,
+	"trailer_length"	NUMERIC NOT NULL,
+	"trailer_height"	NUMERIC NOT NULL,
+	"carrier_code"	TEXT NOT NULL,
+	"availability"	TEXT NOT NULL DEFAULT 'available',
+	"check_in_date"	TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY("trailer_id" AUTOINCREMENT),
+	CHECK("availability" IN ('available', 'assigned')),
+	CHECK("trailer_length" IN (48, 53)),
+	CHECK("trailer_height" IN (12, 14)),
+	CHECK(LENGTH("carrier_code") <= 4)
+);
+
+
+CREATE TABLE "active_loads" (
+	"assignment_id"	INTEGER,
+	"load_id"	INTEGER NOT NULL,
+	"trailer_id"	INTEGER NOT NULL,
+	"assignment_date"	TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY("assignment_id" AUTOINCREMENT),
+	FOREIGN KEY("load_id") REFERENCES "planned_loads"("load_id"),
+	FOREIGN KEY("trailer_id") REFERENCES "trailers_in_yard"("trailer_id")
+);
+
+
+CREATE TABLE "users" (
+	"user_id" INTEGER,
+	"username" TEXT NOT NULL UNIQUE,
+	"password" TEXT NOT NULL,
+	PRIMARY KEY("user_id" AUTOINCREMENT)
+);
+
+
+DROP TABLE planned_loads;
+DROP TABLE trailers_in_yard;
+DROP TABLE active_loads;
+
+
+DELETE FROM planned_loads;
+DELETE FROM trailers_in_yard;
+DELETE FROM active_loads;
+
+
+SELECT * FROM planned_loads;
+SELECT * FROM trailers_in_yard;
+SELECT * FROM active_loads;
+
+
+UPDATE trailers_in_yard
+SET check_in_date = CURRENT_TIMESTAMP
+WHERE check_in_date = 'CURRENT_TIMESTAMP';
+
+
+*using a CSV file for this*
+INSERT INTO "planned_loads" ("required_length_in_feet", "required_height_in_feet", "carrier_code", "destination", "special_requirements")
+VALUES (, , '', '', '')
+
+
+*using a CSV file for this*
+INSERT INTO "trailers_in_yard" ("trailer_number", "trailer_length", "trailer_height", "carrier_code")
+VALUES ('', , , '');
+
+INSERT INTO users (username, password) 
+VALUES ('test_user', 'password123');
+INSERT INTO users (username, password) 
+VALUES ('admin', 'adminpassword');
